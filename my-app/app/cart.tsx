@@ -62,8 +62,6 @@ export default function CartScreen() {
     );
   };
 
-  // Render từng item trong giỏ hàng
-  // Render từng item trong giỏ hàng
 const renderItem = ({ item }: { item: CartItem }) => (
   <View style={styles.cartItem}>
     <Image style={styles.productImage} source={item.image} />
@@ -90,10 +88,9 @@ const renderItem = ({ item }: { item: CartItem }) => (
     </TouchableOpacity>
   </View>
 );
-
-
   return (
     <View style={styles.container}>
+      
       <View style={styles.header}>
         <TouchableOpacity style={styles.menuButton}>
           <Ionicons name="menu" size={30} color="white" />
@@ -113,6 +110,8 @@ const renderItem = ({ item }: { item: CartItem }) => (
         <Image style={styles.sliderImage} source={require('@/assets/images/slider/slider03.png')} />
       </ScrollView>
       <Text style={styles.sectionTitle}>Giỏ Hàng</Text>
+      <View style={styles.underline} />
+
 
       <FlatList
         data={cartItems}
@@ -222,6 +221,8 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginBottom: 15,
     color: '#333',
+    textAlign:'center',
+    
   },
   totalContainer: {
     padding: 15,
@@ -283,5 +284,11 @@ const styles = StyleSheet.create({
   },
   selectText: {
     fontSize: 16,
+  },
+  underline: {
+    width: '100%',
+    height: 2,
+    backgroundColor: '#000000',
+    marginBottom: 3,
   },
 });

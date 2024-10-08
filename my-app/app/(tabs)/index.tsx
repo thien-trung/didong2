@@ -1,17 +1,42 @@
 import React from 'react';
 import { Ionicons } from '@expo/vector-icons';
 import { TextInput, Text, View, Image, ScrollView, StyleSheet, TouchableOpacity, FlatList } from 'react-native';
-import { useNavigation } from '@react-navigation/native'; // Thêm import này
+import { useNavigation } from '@react-navigation/native'; 
 
 export default function HomeScreen() {
   const navigation = useNavigation(); // Khai báo useNavigation
   const categories = ['Điện thoại', 'Laptop', 'Phụ kiện', 'Máy ảnh'];
   const products = [
-    { id: '1', name: 'iPhone 14', price: 29990000, image: require('@/assets/images/products/product03.png') },
-    { id: '2', name: 'MacBook Pro', price: 49990000, image: require('@/assets/images/products/product01.png') },
-    { id: '3', name: 'AirPods Pro', price: 6990000, image: require('@/assets/images/products/product02.png') },
-    { id: '4', name: 'Canon Camera', price: 12990000, image: require('@/assets/images/products/product04.png') },
-  ];
+      { 
+        id: '1', 
+        name: 'iPhone 14', 
+        price: 29990000, 
+        image: require('@/assets/images/products/product03.png'), 
+        description: 'Điện thoại iPhone 14 với màn hình Super Retina XDR, camera 12MP, chip A15 Bionic.' 
+      },
+      { 
+        id: '2', 
+        name: 'MacBook Pro', 
+        price: 49990000, 
+        image: require('@/assets/images/products/product01.png'), 
+        description: 'Laptop MacBook Pro 13 inch với chip M1, màn hình Retina, thời lượng pin lên tới 20 giờ.' 
+      },
+      { 
+        id: '3', 
+        name: 'AirPods Pro', 
+        price: 6990000, 
+        image: require('@/assets/images/products/product02.png'), 
+        description: 'Tai nghe AirPods Pro với khả năng khử tiếng ồn, âm thanh chất lượng cao.' 
+      },
+      { 
+        id: '4', 
+        name: 'Canon EOS M50', 
+        price: 14990000, 
+        image: require('@/assets/images/products/product04.png'), // Đảm bảo bạn có hình ảnh cho sản phẩm này
+        description: 'Máy ảnh Canon EOS M50 với cảm biến APS-C, quay video 4K, và tích hợp Wi-Fi.' 
+      },
+    ];
+  
 
   return (
     <ScrollView style={styles.container}>
@@ -48,6 +73,7 @@ export default function HomeScreen() {
 
       <View style={styles.productContainer}>
         <Text style={styles.sectionTitle}>Danh sách sản phẩm</Text>
+      <View style={styles.underline} />
         <FlatList
           data={products}
           numColumns={2}
@@ -110,15 +136,16 @@ const styles = StyleSheet.create({
     elevation: 2,
   },
   categoryContainer: {
-    marginVertical: 15,
+    marginVertical: 1,
     marginHorizontal: 10,
-    marginBottom: 20,
+    marginBottom: 10,
   },
   sectionTitle: {
     fontSize: 20,
     fontWeight: 'bold',
     marginBottom: 15,
     color: '#333',
+    textAlign:'center',
   },
   categories: {
     flexDirection: 'row',
@@ -214,5 +241,11 @@ const styles = StyleSheet.create({
   },
   cartIcon: {
     marginLeft: 5,
+  },
+  underline: {
+    width: '100%',
+    height: 2,
+    backgroundColor: '#000000',
+    marginBottom: 3,
   },
 });

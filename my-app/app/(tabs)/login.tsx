@@ -20,7 +20,7 @@ export default function TabTwoScreen() {
       </ThemedView>
         <Image
         style={styles.logoapp}
-        source={require('@/assets/images/logo4.png')}  
+        source={require('@/assets/images/dashboard-logo.png')}  
       />
 
      
@@ -43,16 +43,16 @@ export default function TabTwoScreen() {
         secureTextEntry
         autoCapitalize="none"
       />
-
+    <TouchableOpacity>
+        <Text style={styles.forgotPasswordText}>Quên mật khẩu?</Text>
+      </TouchableOpacity> 
       
       <TouchableOpacity style={styles.loginButton}>
         <Text style={styles.buttonText}>Đăng nhập</Text>
       </TouchableOpacity>
 
    
-    <TouchableOpacity>
-        <Text style={styles.forgotPasswordText}>Quên mật khẩu?</Text>
-      </TouchableOpacity> 
+
 
        
       <TouchableOpacity style={styles.socialButton}>
@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
       },
       text: {
         marginVertical: 20,
-
+        backgroundColor: 'black',  
         justifyContent: 'center',
         alignItems: 'center',
 
@@ -91,7 +91,7 @@ const styles = StyleSheet.create({
       justifyContent: 'center',
       alignItems: 'center',
       paddingHorizontal: 20,
-      backgroundColor: '#fff',
+      // backgroundColor: '#fff',
     },
     logo: {
       width: 350,
@@ -115,7 +115,9 @@ const styles = StyleSheet.create({
       borderRadius: 5,
       width: '100%',
       alignItems: 'center',
-      marginBottom: 10,
+      marginTop:15,
+      marginBottom: 100,
+
     },
     buttonText: {
       color: 'white',
@@ -123,9 +125,10 @@ const styles = StyleSheet.create({
     },
     forgotPasswordText: {
       color: '#4285F4',
-      marginBottom: 20,
       fontSize: 16,
-      alignItems: 'flex-end',
+      textAlign:'right',
+      marginRight:10,
+
     },
     socialButton: {
       flexDirection: 'row',
@@ -153,11 +156,13 @@ const styles = StyleSheet.create({
       marginBottom: 15,
     },
     logoapp: {
-        width: 420,
+        width: 350,
         height: 200,
         resizeMode: 'contain',
         marginBottom: 0,
         marginVertical: 0,
+        marginHorizontal:30,
+        alignItems:'center',
 
       },
       textRegister:{

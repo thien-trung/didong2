@@ -31,6 +31,30 @@ export default function RootLayout() {
       <Stack>
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
         <Stack.Screen name="+not-found" />
+        <Stack.Screen
+          name="ProductDetail"
+          options={{
+            headerTitle: '', // Ẩn chữ "ProductDetail"
+            headerBackVisible: false, // Ẩn nút quay lại
+            headerShown: false
+          }}
+        />
+        <Stack.Screen
+          name="cart"
+          options={{
+            headerTitle: '', 
+            headerBackVisible: false, // Ẩn nút quay lại
+            headerShown: false
+          }}
+        />
+        <Stack.Screen
+          name="register"
+          options={{
+            headerTitle: '', 
+            headerBackVisible: false, // Ẩn nút quay lại
+            headerShown: false
+          }}
+        />
       </Stack>
     </ThemeProvider>
   );

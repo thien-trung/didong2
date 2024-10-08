@@ -1,12 +1,15 @@
-import React, { useState } from 'react';
+import React, { ReactNode, useState } from 'react';
 import { View, Text, Image, TouchableOpacity, StyleSheet, FlatList, ScrollView } from 'react-native';
 import { useRoute, RouteProp } from '@react-navigation/native';
 import { Dimensions } from 'react-native';
+import { router } from 'expo-router';
+import { Ionicons } from '@expo/vector-icons';
 
 const { width } = Dimensions.get('window');
 
 // Định nghĩa kiểu cho sản phẩm và các tham số truyền vào màn hình chi tiết sản phẩm
 type Product = {
+  description: ReactNode;
   name: string;
   price: string;
   image: any;  
@@ -20,14 +23,40 @@ type RelatedProduct = {
   name: string;
   price: string;
   image: any;  
+  description: string;
 };
 
 const relatedProducts: RelatedProduct[] = [
-  { id: '1', name: 'iPhone 14', price: '29,990,000 VND', image: require('@/assets/images/products/product03.png') },
-  { id: '2', name: 'MacBook Pro', price: '49,990,000 VND', image: require('@/assets/images/products/product01.png') },
-  { id: '3', name: 'AirPods Pro', price: '6,990,000 VND', image: require('@/assets/images/products/product02.png') },
-  { id: '4', name: 'Canon Camera', price: '12,990,000 VND', image: require('@/assets/images/products/product04.png') },
+  { 
+    id: '1', 
+    name: 'iPhone 14', 
+    price: '29,990,000 VND', 
+    image: require('@/assets/images/products/product03.png'),
+    description: 'iPhone 14 với hiệu suất mạnh mẽ và camera chất lượng cao.' // Mô tả sản phẩm
+  },
+  { 
+    id: '2', 
+    name: 'MacBook Pro', 
+    price: '49,990,000 VND', 
+    image: require('@/assets/images/products/product01.png'),
+    description: 'MacBook Pro, máy tính xách tay cao cấp với hiệu suất vượt trội.' // Mô tả sản phẩm
+  },
+  { 
+    id: '3', 
+    name: 'AirPods Pro', 
+    price: '6,990,000 VND', 
+    image: require('@/assets/images/products/product02.png'),
+    description: 'AirPods Pro với khả năng khử tiếng ồn và âm thanh sống động.' // Mô tả sản phẩm
+  },
+  { 
+    id: '4', 
+    name: 'Canon Camera', 
+    price: '12,990,000 VND', 
+    image: require('@/assets/images/products/product04.png'),
+    description: 'Canon Camera, máy ảnh chất lượng cao cho những người yêu thích nhiếp ảnh.' // Mô tả sản phẩm
+  },
 ];
+
 
 const ProductDetailScreen = () => {
   const route = useRoute<ProductDetailScreenRouteProp>();
@@ -46,18 +75,26 @@ const ProductDetailScreen = () => {
   };
 
   const renderRelatedProduct = ({ item }: { item: RelatedProduct }) => (
-    <TouchableOpacity style={styles.relatedProductContainer}>
-      <Image source={item.image} style={styles.relatedProductImage} />
+    <TouchableOpacity style={styles.relatedProductContainer} >
+      <Image source={item.image} style={styles.relatedProductImage}/>
       <Text style={styles.relatedProductName}>{item.name}</Text>
       <Text style={styles.relatedProductPrice}>{item.price}</Text>
+
     </TouchableOpacity>
   );
-
+    const handleRegisterPress = () => {
+        router.push('/(tabs)');
+      };
   return (
+    
     <ScrollView style={styles.container}>
+          <TouchableOpacity style={styles.back} onPress={handleRegisterPress}>
+            <Ionicons name="arrow-back" size={35} color="black" />
+          </TouchableOpacity>
       <Image source={product.image} style={styles.productImage} />
       <Text style={styles.productName}>{product.name}</Text>
       <Text style={styles.productPrice}>{product.price}</Text>
+
       <View style={styles.quantitySelector}>
         <TouchableOpacity style={styles.button} onPress={decreaseQuantity}>
           <Text style={styles.buttonText}>-</Text>
@@ -71,9 +108,7 @@ const ProductDetailScreen = () => {
         <Text style={styles.orderButtonText}>Đặt Hàng</Text>
       </TouchableOpacity>
       <Text style={styles.descriptionTitle}>Mô tả:</Text>
-      <Text style={styles.descriptionText}>
-        {/* Thêm mô tả sản phẩm tại đây */}
-      </Text>
+      <Text style={styles.descriptionText}>{product.description}</Text>
       <Text style={styles.relatedProductsTitle}>Sản phẩm liên quan</Text>
       <FlatList
         data={relatedProducts}
@@ -83,6 +118,7 @@ const ProductDetailScreen = () => {
         showsHorizontalScrollIndicator={false}
       />
     </ScrollView>
+    
   );
 };
 
@@ -193,6 +229,12 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: '#E63946',
   },
+  back:{
+    padding: 5,
+    marginTop:10,
+    marginLeft:-10,
+  },
+
 });
 
 export default ProductDetailScreen;

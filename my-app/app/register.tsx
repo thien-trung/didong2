@@ -23,7 +23,7 @@ export default function TabTwoScreen() {
       </ThemedView>
         <Image
         style={styles.logoapp}
-        source={require('@/assets/images/logo4.png')}  
+        source={require('@/assets/images/dashboard-logo.png')}  
       />
      
       <TextInput
@@ -86,8 +86,8 @@ const styles = StyleSheet.create({
     marginVertical: 50,
   },
   text: {
+    backgroundColor: 'black',  
     marginVertical: 20,
-
     justifyContent: 'center',
     alignItems: 'center',
 
@@ -122,6 +122,8 @@ const styles = StyleSheet.create({
       width: '100%',
       alignItems: 'center',
       marginBottom: 10,
+      marginTop:35,
+
     },
     buttonText: {
       color: 'white',
@@ -158,11 +160,13 @@ const styles = StyleSheet.create({
       marginBottom: 15,
     },
     logoapp: {
-      width: 420,
+      width: 350,
       height: 200,
       resizeMode: 'contain',
       marginBottom: 0,
       marginVertical: 0,
+      marginHorizontal:30,
+      alignItems:'center',
 
     },
     abc: {

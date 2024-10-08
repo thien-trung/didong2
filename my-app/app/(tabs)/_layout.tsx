@@ -16,17 +16,6 @@ export default function TabLayout() {
         tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
         headerShown: false,
       }}>
-      
-
-            <Tabs.Screen
-        name="login"
-        options={{
-          title: 'Đăng Nhập',
-          tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'code-slash' : 'code-slash-outline'} color={color} />
-          ),
-        }}
-      />
       <Tabs.Screen
         name="index"
         options={{
@@ -36,6 +25,15 @@ export default function TabLayout() {
           ),
         }}
       /> 
+       <Tabs.Screen
+        name="login"
+        options={{
+          title: 'Đăng Nhập',
+          tabBarIcon: ({ color, focused }) => (
+            <TabBarIcon name={focused ? 'person' : 'person-outline'} color={color} />
+          ),
+        }}
+      />
       {/* <Tabs.Screen
         name="register"
         options={{
