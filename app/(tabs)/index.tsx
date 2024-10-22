@@ -19,7 +19,7 @@ export default function HomeScreen() {
 
   const [products, setProducts] = useState<Product[]>([]); // Thêm state cho products
 
-  useEffect(() => {
+  useEffect(() => {  
     // Gọi API để lấy danh sách sản phẩm
     axios.get("http://127.0.0.1:8000/api/products") // Đổi lại URL cho phù hợp với backend
       .then((response) => {
